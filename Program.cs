@@ -1,9 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+//Stöd för MVC-mönster
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+ app.UseStaticFiles();  //Aktiverar statiska filer
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -14,15 +16,18 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Aktiverar Routing
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapStaticAssets();
 
+//Routing
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
+    pattern: "{controller=BMICalculatorController}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

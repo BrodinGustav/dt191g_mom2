@@ -1,27 +1,35 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc; //Använder mvc-mönster
 using Moment2.Models;
 
-namespace Moment2.Controllers;
+namespace Moment2.Controllers;  //
 
-public class HomeController : Controller
+public class BMICalculatorController : Controller //Ärver av klassen Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly ILogger<BMICalculatorController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public BMICalculatorController(ILogger<BMICalculatorController> logger)
     {
         _logger = logger;
     }
+
+    //Returnerar vyer
 
     public IActionResult Index()
     {
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Info()
     {
         return View();
     }
+
+        public IActionResult Result()
+    {
+        return View();
+    }
+
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
