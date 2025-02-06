@@ -1,15 +1,23 @@
 <!-- Här ska resultatet av BMI renderas-->
 
-@model Moment2.Models.BMIModel  //Hämtar modell
+@model Moment2.Models.BMIModel //Hämtar modell
 
 @{
     ViewData["Title"] = "Ditt BMI-resultat";
 }
 
-<h2>@ViewData["Title"]</h2>
+@if (Model != null)
+{
+    <h2>BMI-resultat</h2>
+    <!--Visa BMI och kategori från controllern-->
+    <p><strong>Ditt BMI:</strong> @Model.BMI.ToString("0.00")</p> <!--Rundar till 2 decimaler-->
+    <p><strong>Kategori:</strong> @Model.Category</p>
+}
+else{
+    <p>Ingen data tillgänglig. Vänligen beräkna ditt BMI först."</p>
+}
 
-<!--Visa BMI och kategori från controllern-->
-<p><strong>Ditt BMI:</strong> @Model.BMI.ToString("0.00")</p>   //Rundar till 2 decimaler
-<p><strong>Kategori:</strong> @Model.Category</p>
+
+
 
 <a asp-action="Index">Tillbaka</a>

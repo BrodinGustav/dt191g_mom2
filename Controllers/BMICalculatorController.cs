@@ -25,14 +25,26 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
     // Visar BMI-resultatet
     public IActionResult Result()
     {
-        return View();
+        //Försöker hämta BMI och kategori från sessionen
+        var lastBmi = HttpContext.Session.GetString("LastBMI");
+        var bmiCategory = HttpContext.Session.GetString("BMICategory");
+
+        if (string.IsNullOrEmpty(lastBmi) || string.IsNullOrEmpty(bmiCategory))
+        {
+            return View();
+        }
+
+        //Om sessiondata finns, skicka den till vyn
+        decimal bmi = decimal.Parse(lastBmi);                               // Konverterar sträng till decimal
+        return View(new BMIModel { BMI = bmi, Category = bmiCategory });
+
     }
 
 
     //Metoder
 
     //Tar emot vikt och längd, beräknar BMI och skickar resultatet till vyn
-    
+
     [HttpPost]  //Skickar resultat till vyn (Index) via HttpPost
     public IActionResult Calculate(decimal weight, decimal height)
     {
@@ -46,6 +58,8 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
         //Beräknar BMI
         height = height / 100;                          //Omvandlar cm till meter
         decimal bmi = weight / (height * height);
+
+        //Lagrar uträknad kategori i variabel
         string category = GetBMICategory(bmi);
 
         //Skicka BMI till vyn med ViewBag
