@@ -3,6 +3,9 @@ var builder = WebApplication.CreateBuilder(args);
 //Stöd för MVC-mönster
 builder.Services.AddControllersWithViews();
 
+//Stöd för sessionshantering
+builder.Services.AddSession(); 
+
 var app = builder.Build();
 
  app.UseStaticFiles();  //Aktiverar statiska filer
@@ -16,6 +19,9 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//Aktiverar sessionshantering
+app.UseSession();
 
 //Aktiverar Routing
 app.UseRouting();

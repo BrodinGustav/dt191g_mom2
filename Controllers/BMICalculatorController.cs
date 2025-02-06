@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc; //Använder mvc-mönster
+using Microsoft.AspNetCore.Routing.Constraints;
 using Moment2.Models;           //Importrerar modellen // Importera modellen
 
 namespace Moment2.Controllers;  //
@@ -33,7 +34,7 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
     //Tar emot vikt och längd, beräknar BMI och skickar resultatet till vyn
     
     [HttpPost]  //Skickar resultat till vyn (Index) via HttpPost
-    public IActionResult Calculate(double weight, double height)
+    public IActionResult Calculate(decimal weight, decimal height)
     {
         //Kontroll om input är giltiga
         if (height <= 0 || weight <= 0)
@@ -43,7 +44,7 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
         }
 
         //Beräknar BMI
-        double bmi = weight / (height * height);
+        decimal bmi = weight / (height * height);
         string category = GetBMICategory(bmi);
 
         //Skicka BMI till vyn med ViewBag
@@ -63,11 +64,11 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
 
 
     // Metod för att bestämma BMI-kategori baserat på BMI-värdet
-    private string GetBMICategory(double bmi)
+    private string GetBMICategory(decimal bmi)
     {
-        if (bmi < 18.5) return "Undervikt";
-        if (bmi < 25) return "Normalvikt";
-        if (bmi < 30) return "Övervikt";
+        if (bmi < 18.5m) return "Undervikt";    //Använder "m" för att markerar att värdet är av typen decimal
+        if (bmi < 25m) return "Normalvikt";
+        if (bmi < 30m) return "Övervikt";
         return "Fetma";
     }
 }

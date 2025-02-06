@@ -1,0 +1,31 @@
+<!-- Här ska användaren mata in vikt och längd-->
+
+@model Moment2.Models.BMIModel
+
+@{
+    ViewData["Title"] = "BMI Kalkylator";
+}
+
+<h2>BMI Kalkylator</h2>
+<p>Fyll i din vikt och längd för att beräkna ditt BMI</p>
+
+
+@if (ViewBag.Message != null)
+{
+    <div style="color: red;">
+        <strong>@ViewBag.Message</strong>
+    </div>
+
+}
+
+<form asp-action="Calculate" method="post">
+    <div>
+        <label for="weight">Vikt (kg):</label>
+        <input type="number" name="weight" required />
+    </div>
+    <div>
+        <label for="height">Längd (m):</label>
+        <input type="number" name="height" required/>
+    </div>
+    <button type="submit">beräkna BMI</button>
+</form>

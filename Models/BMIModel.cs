@@ -7,7 +7,7 @@ namespace Moment2.Models
         public decimal Weight { get; set; }
         public decimal Height { get; set; }
         public decimal BMI { get; set; }
-        public string? category { get; set; }
+        public string? Category { get; set; }
 
     }
 }
