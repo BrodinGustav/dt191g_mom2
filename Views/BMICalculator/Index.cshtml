@@ -1,6 +1,6 @@
 <!-- Här ska användaren mata in vikt och längd-->
 
-@model Moment2.Models.BMIModel
+@model Moment2.Models.BMIModel  //Hämtar modell
 
 @{
     ViewData["Title"] = "BMI Kalkylator";
@@ -24,7 +24,7 @@
         <input type="number" name="weight" required />
     </div>
     <div>
-        <label for="height">Längd (m):</label>
+        <label for="height">Längd (cm):</label>
         <input type="number" name="height" required/>
     </div>
     <button type="submit">beräkna BMI</button>

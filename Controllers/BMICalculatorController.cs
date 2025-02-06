@@ -40,10 +40,11 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
         if (height <= 0 || weight <= 0)
         {
             ViewBag.Message = "Ange giltiga värden för vikt och längd!";
-            return View("Index");
+            return View("Index"); //Skickar användaren tillbaka till vyn Index
         }
 
         //Beräknar BMI
+        height = height / 100;                          //Omvandlar cm till meter
         decimal bmi = weight / (height * height);
         string category = GetBMICategory(bmi);
 
@@ -58,7 +59,7 @@ public class BMICalculatorController : Controller //Ärver av klassen Controller
         HttpContext.Session.SetString("LastBMI", bmi.ToString("0.00"));
         HttpContext.Session.SetString("BMICategory", category);
 
-        //Skicka data till vyn via instans av modell
+        //Skicka data till vyn via instans av modell. Användaren skickas till vyn Result.
         return View("Result", new BMIModel { BMI = bmi, Category = category });
     }
 
