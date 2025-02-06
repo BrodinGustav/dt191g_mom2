@@ -17,15 +17,17 @@
     </div>
 
 }
-
-<form asp-action="Calculate" method="post">
+<!--Formulär skickas till BMICalculatorController-->
+<form asp-asp-controller="BMICalculator"- asp-action="Calculate" method="post">
     <div>
-        <label for="weight">Vikt (kg):</label>
-        <input type="number" name="weight" required />
+
+        <!--Skapar 2-vägsbidning mellan BMIModels egenskaper och inputfält-->
+        <label asp-for="Weight">Vikt (kg):</label>
+        <input asp-for="Weight" name="weight" required />
     </div>
     <div>
-        <label for="height">Längd (cm):</label>
-        <input type="number" name="height" required/>
+        <label asp-for="Height">Längd (cm):</label>
+        <input asp-for="Height" name="height" required/>
     </div>
     <button type="submit">beräkna BMI</button>
 </form>

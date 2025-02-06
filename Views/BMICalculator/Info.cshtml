@@ -1,1 +1,42 @@
 <!-- Här ska info kring BMI finnas-->
+
+@{
+    ViewData["Titel"] = "Information om BMI";
+}
+
+<h2>Information om BMI</h2>
+
+<p>
+    BMI (Body Mass Index) är ett mått på kroppens fettprocent baserat på vikt och längd. Det används för att
+    kategorisera individer enligt deras viktstatus.
+</p>
+
+<h3>BMI-kategorier</h3>
+<ul>
+    <li><strong>Undervikt</strong>: BMI under 18.5</li>
+    <p>Personer med ett BMI under 18.5 anses vara underviktiga. Det kan vara ett tecken på näringsbrist eller andra
+        hälsoproblem.</p>
+
+    <li><strong>Normalvikt</strong>: BMI mellan 18.5 och 24.9</li>
+    <p>En BMI mellan 18.5 och 24.9 anses vara inom det normala intervallet. Detta innebär att personen har en hälsosam
+        kroppsvikt i relation till sin längd.</p>
+
+    <li><strong>Övervikt</strong>: BMI mellan 25 och 29.9</li>
+    <p>En BMI mellan 25 och 29.9 innebär att en person är överviktig. Det kan vara en riskfaktor för olika
+        hälsotillstånd, som hjärtsjukdom och diabetes.</p>
+
+    <li><strong>Fetma</strong>: BMI över 30</li>
+    <p>Personer med ett BMI över 30 betraktas som feta, vilket innebär en ökad risk för allvarliga hälsoproblem som
+        hjärtsjukdom, stroke och vissa typer av cancer.</p>
+</ul>
+
+<p>
+    Det är viktigt att komma ihåg att BMI inte tar hänsyn till andra faktorer som muskelmassa eller fördelningen av fett
+    i kroppen. Därför bör BMI bara ses som en generell riktlinje för att bedöma kroppsviktens hälsorisker.
+</p>
+
+<!-- Länk tillbaka till huvudvyn -->
+<p>
+    <a asp-action="Index">Tillbaka till BMI-beräknaren</a>
+</p>
+
